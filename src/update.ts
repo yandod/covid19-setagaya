@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const cheerioTableparser = require('cheerio-tableparser');
+const fs = require('fs');
 import fetch from 'node-fetch';
 
 const main = async () => {
@@ -24,6 +25,10 @@ const main = async () => {
         'deaths': data[1][5].match(/\d+/)[0],
     };
 
+    let json_data = JSON.parse(fs.readFileSync('./data/output.json'));
+    json_data.data.unshift(new_record);
+
+    fs.writeFileSync('./data/output.json', JSON.stringify(json_data));
     console.log(new_record);
 
     
