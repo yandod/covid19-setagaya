@@ -1,0 +1,37 @@
+name: extract data from web and update json file in repo
+
+on:
+  # push:
+  #   branches: [ master ]
+  # schedule:
+  #   branches: [main]
+  #   - cron:  '45 14 * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 17
+    
+    - name: update data
+      run: |
+        npm install
+        npx ts-node ./src/update.ts
+
+    - name: Simple commit
+      uses: zwaldowski/git-commit-action@v1
+    
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
