@@ -2,7 +2,6 @@ name: extract data from web and update json file in repo
 
 on:
   schedule:
-    branches: [main]
     - cron:  '45 7 * * *'
   workflow_dispatch:
 jobs:
