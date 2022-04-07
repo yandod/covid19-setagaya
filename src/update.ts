@@ -5,10 +5,8 @@ import fetch from 'node-fetch';
 
 const main = async () => {
     const target = 'https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html';
-    const html: any = await fetch(target)
-        .then((response: { text: () => any; }) => response.text())
-        .then((body: any) => {return body});
-
+    const response = await fetch(target);
+    const html = await response.text();
     const page = cheerio.load(html);
 
     //basic information
