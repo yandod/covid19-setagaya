@@ -1,11 +1,9 @@
 name: extract data from web and update json file in repo
 
 on:
-  # push:
-  #   branches: [ master ]
-  # schedule:
-  #   branches: [main]
-  #   - cron:  '45 14 * * *'
+  schedule:
+    branches: [main]
+    - cron:  '45 7 * * *'
   workflow_dispatch:
 jobs:
   build:
