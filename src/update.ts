@@ -66,7 +66,7 @@ const main = async () => {
         json_data.data.unshift(new_record);
     }
     console.dir(json_data);
-    fs.writeFileSync('./data/output.json', JSON.stringify(json_data));
+    fs.writeFileSync('./data/output.json', JSON.stringify(json_data,null,2));
 
     
 };
