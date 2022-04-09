@@ -7,3 +7,8 @@ services:
       - .:/var/www/html:cached
     ports:
       - 3000:3000
+    environment:
+      - TWITTER_APP_KEY=
+      - TWITTER_APP_SECRET=
+      - TWITTER_ACCESS_TOKEN=
+      - TWITTER_ACCESS_SECRET=
