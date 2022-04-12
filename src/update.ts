@@ -17,7 +17,7 @@ const main = async () => {
     console.log(basicData);
 
     //gender stats
-    const genderTable = cheerio.load(page('table')[13]);
+    const genderTable = cheerio.load(page('h3:contains("男女別人数")').next().next()[0]);
     cheerioTableParser(genderTable);
     const genderData = genderTable('table').parsetable();
     console.log(genderData);
