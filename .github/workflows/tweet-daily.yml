@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 jobs:
   tweet:
-    needs: build
     runs-on: ubuntu-latest
 
     concurrency:
