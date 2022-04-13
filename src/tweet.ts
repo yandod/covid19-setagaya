@@ -27,21 +27,33 @@ const main = () => {
         accessSecret: accessSecret,
       });
 
-console.log(appKey);
-
     const json_data = JSON.parse(fs.readFileSync('./data/output.json'));
     const yesterdayData = json_data.data[1];
     const todayData = json_data.data[0];
 
-    const caseDelta = todayData.confirmed_cases - yesterdayData.confirmed_cases;
+    const deltaFormat = new Intl.NumberFormat("en-US", {
+        signDisplay: "exceptZero"
+    });
 
-    const message = `区内の新型コロナウイルス感染症の検査陽性者の状況
-陽性者数(累計): ${todayData.confirmed_cases}人 (前日比${caseDelta})
-入院中: ${todayData.inpatient_care}人
-宿泊療養中: ${todayData.hotel_care}人
-自宅療養中: ${todayData.home_care}人
-退院等(累計): ${todayData.cured}人
-死亡(累計): ${todayData.deaths}人`;
+    const caseFormat =  new Intl.NumberFormat("en-US");
+
+    const caseDelta = todayData.confirmed_cases - yesterdayData.confirmed_cases;
+    const inpatientDelta = todayData.inpatient_care - yesterdayData.inpatient_care;
+    const hotelDelta = todayData.hotel_care - yesterdayData.hotel_care;
+    const homeDelta = todayData.home_care - yesterdayData.home_care;
+    const curedDelta = todayData.cured - yesterdayData.cured;
+    const deathDelta = todayData.deaths - yesterdayData.deaths;
+
+    const message = `区内の検査陽性者の状況
+累計陽性者数: ${caseFormat.format(todayData.confirmed_cases)}人 (${deltaFormat.format(caseDelta)})
+🏥: ${caseFormat.format(todayData.inpatient_care)}人 (${deltaFormat.format(inpatientDelta)})
+🏨: ${caseFormat.format(todayData.hotel_care)}人 (${deltaFormat.format(hotelDelta)})
+🏠: ${caseFormat.format(todayData.home_care)}人 (${deltaFormat.format(homeDelta)})
+🎉: ${caseFormat.format(todayData.cured)}人 (${deltaFormat.format(curedDelta)})
+累計死亡者: ${caseFormat.format(todayData.deaths)}人 (${deltaFormat.format(deathDelta)})
+
+https://bit.ly/covid19setagaya`;
+
     console.log(message);
     console.log(message.length);
     userClient.v2.tweet(message);
