@@ -2,7 +2,7 @@ name: extract data from web and update json file in repo
 
 on:
   schedule:
-    - cron:  '45 7 * * *'
+    - cron:  '45 6 * * *'
   workflow_dispatch:
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-      
+
     steps:
     - uses: actions/checkout@v2
 
@@ -55,4 +55,4 @@ jobs:
         TWITTER_ACCESS_SECRET: ${{secrets.TWITTER_ACCESS_SECRET}}
       run: |
         npm install
-        npx ts-node --file ./src/tweet.ts
+        npx ts-node --files ./src/tweet.ts
