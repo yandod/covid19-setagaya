@@ -2,6 +2,7 @@
   "data": [
     {
       "date": "2022-04-14",
+      "updated_date": "4月13日現在",
       "confirmed_cases": "94075",
       "inpatient_care": "694",
       "hotel_care": "217",
