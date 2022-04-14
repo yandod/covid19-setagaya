@@ -44,7 +44,8 @@ const main = () => {
     const curedDelta = todayData.cured - yesterdayData.cured;
     const deathDelta = todayData.deaths - yesterdayData.deaths;
 
-    const message = `区内の検査陽性者の状況
+    const message = `${todayData.updated_date}
+区内の検査陽性者の状況
 累計陽性者数: ${caseFormat.format(todayData.confirmed_cases)}人 (${deltaFormat.format(caseDelta)})
 🏥: ${caseFormat.format(todayData.inpatient_care)}人 (${deltaFormat.format(inpatientDelta)})
 🏨: ${caseFormat.format(todayData.hotel_care)}人 (${deltaFormat.format(hotelDelta)})

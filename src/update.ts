@@ -9,6 +9,10 @@ const main = async () => {
     const html = await response.text();
     const page = cheerio.load(html);
 
+    //updated date
+    const updatedDate = cheerio.load(page('h3:contains("検査陽性者の状況")').next()[0]).text();
+    console.log(updatedDate);
+
     //basic information
     const table = page('table')[0];
     const cTable = cheerio.load(table);
@@ -37,6 +41,7 @@ const main = async () => {
 
     const new_record = {
         'date': new Date().toISOString().split('T')[0],
+        'updated_date': updatedDate,
         'confirmed_cases': basicData[1][0].match(/\d+/)[0],
         'inpatient_care': basicData[1][1].match(/\d+/)[0],
         'hotel_care': basicData[1][2].match(/\d+/)[0],
