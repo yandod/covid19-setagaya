@@ -1,6 +1,29 @@
 {
   "data": [
     {
+      "date": "2022-04-14",
+      "confirmed_cases": "94075",
+      "inpatient_care": "694",
+      "hotel_care": "217",
+      "home_care": "5160",
+      "cured": "87801",
+      "deaths": "203",
+      "confirmed_cases_male": "47301",
+      "confirmed_cases_female": "45443",
+      "confirmed_cases_age_0_9": "11617",
+      "confirmed_cases_age_10_19": "9561",
+      "confirmed_cases_age_20_29": "22415",
+      "confirmed_cases_age_30_39": "16867",
+      "confirmed_cases_age_40_49": "14883",
+      "confirmed_cases_age_50_59": "8986",
+      "confirmed_cases_age_60_69": "3782",
+      "confirmed_cases_age_70_79": "2324",
+      "confirmed_cases_age_80_89": "1571",
+      "confirmed_cases_age_90_99": "693",
+      "confirmed_cases_age_100_109": "44",
+      "confirmed_cases_age_unknown": "1"
+    },
+    {
       "date": "2022-04-13",
       "confirmed_cases": "93373",
       "inpatient_care": "681",
