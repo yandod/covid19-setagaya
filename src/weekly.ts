@@ -18,7 +18,7 @@ const main = () => {
 
     if (today.getDay() !== 2) {
         console.log('Today is not Tuesday');
-        //return;
+        return;
     }
     const userClient = new TwitterApi({
         appKey: appKey,
@@ -32,7 +32,7 @@ const main = () => {
     const todayData = json_data.data[0];
 
     const deltaFormat = new Intl.NumberFormat("en-US", {
-        signDisplay: "exceptZero"
+        signDisplay: "always"
     });
 
     const caseFormat =  new Intl.NumberFormat("en-US");
@@ -53,62 +53,28 @@ const main = () => {
     const ageUnknownDelta = todayData.confirmed_cases_age_unknown - yesterdayData.confirmed_cases_age_unknown;
 
     const message = `${todayData.updated_date}
-区内の検査陽性者の状況
-男女別人数
-男: ${caseFormat.format(todayData.confirmed_cases_male)}人 (${deltaFormat.format(maleDelta)})
-女: ${caseFormat.format(todayData.confirmed_cases_female)}人 (${deltaFormat.format(femaleDelta)})
-(1/3)`;
+男: ${caseFormat.format(todayData.confirmed_cases_male)} (${deltaFormat.format(maleDelta)})
+女: ${caseFormat.format(todayData.confirmed_cases_female)} (${deltaFormat.format(femaleDelta)})
 
-    const message2nd = `年代別人数
-0~9: ${caseFormat.format(todayData.confirmed_cases_age_0_9)}人 (${deltaFormat.format(age09Delta)})
-10~19: ${caseFormat.format(todayData.confirmed_cases_age_10_19)}人 (${deltaFormat.format(age1019Delta)})
-20~29: ${caseFormat.format(todayData.confirmed_cases_age_20_29)}人 (${deltaFormat.format(age2029Delta)})
-30~39: ${caseFormat.format(todayData.confirmed_cases_age_30_39)}人 (${deltaFormat.format(age3039Delta)})
-40~49: ${caseFormat.format(todayData.confirmed_cases_age_40_49)}人 (${deltaFormat.format(age4049Delta)})
-50~59: ${caseFormat.format(todayData.confirmed_cases_age_50_59)}人 (${deltaFormat.format(age5059Delta)})
-(2/3)`;
-
-    const message3rd = `年代別人数
-60~69: ${caseFormat.format(todayData.confirmed_cases_age_60_69)}人 (${deltaFormat.format(age6069Delta)})
-70~79: ${caseFormat.format(todayData.confirmed_cases_age_70_79)}人 (${deltaFormat.format(age7079Delta)})
-80~89: ${caseFormat.format(todayData.confirmed_cases_age_80_89)}人 (${deltaFormat.format(age8089Delta)})
-90~99: ${caseFormat.format(todayData.confirmed_cases_age_90_99)}人 (${deltaFormat.format(age9099Delta)})
-100~109: ${caseFormat.format(todayData.confirmed_cases_age_100_109)}人 (${deltaFormat.format(age100109Delta)})
-不明: ${caseFormat.format(todayData.confirmed_cases_age_unknown)}人 (${deltaFormat.format(ageUnknownDelta)})
-
-https://bit.ly/covid19setagaya
-(3/3)`;
-
-//     const message = `${todayData.updated_date}
-// 区内の検査陽性者の状況
-// 男女別人数
-// 男: ${caseFormat.format(todayData.confirmed_cases_male)}人 (${deltaFormat.format(maleDelta)})
-// 女: ${caseFormat.format(todayData.confirmed_cases_female)}人 (${deltaFormat.format(femaleDelta)})
-// 年代別人数
-// 0~9: ${caseFormat.format(todayData.confirmed_cases_age_0_9)}人 (${deltaFormat.format(age09Delta)})
-// 10~19: ${caseFormat.format(todayData.confirmed_cases_age_10_19)}人 (${deltaFormat.format(age1019Delta)})
-// 20~29: ${caseFormat.format(todayData.confirmed_cases_age_20_29)}人 (${deltaFormat.format(age2029Delta)})
-// 30~39: ${caseFormat.format(todayData.confirmed_cases_age_30_39)}人 (${deltaFormat.format(age3039Delta)})
-// 40~49: ${caseFormat.format(todayData.confirmed_cases_age_40_49)}人 (${deltaFormat.format(age4049Delta)})
-// 50~59: ${caseFormat.format(todayData.confirmed_cases_age_50_59)}人 (${deltaFormat.format(age5059Delta)})
-// 60~69: ${caseFormat.format(todayData.confirmed_cases_age_60_69)}人 (${deltaFormat.format(age6069Delta)})
-// 70~79: ${caseFormat.format(todayData.confirmed_cases_age_70_79)}人 (${deltaFormat.format(age7079Delta)})
-// 80~89: ${caseFormat.format(todayData.confirmed_cases_age_80_89)}人 (${deltaFormat.format(age8089Delta)})
-// 90~99: ${caseFormat.format(todayData.confirmed_cases_age_90_99)}人 (${deltaFormat.format(age9099Delta)})
-// 100~109: ${caseFormat.format(todayData.confirmed_cases_age_100_109)}人 (${deltaFormat.format(age100109Delta)})
-// 不明: ${caseFormat.format(todayData.confirmed_cases_age_unknown)}人 (${deltaFormat.format(ageUnknownDelta)})
-// https://bit.ly/covid19setagaya`;
+年代別
+~9: ${caseFormat.format(todayData.confirmed_cases_age_0_9)} (${deltaFormat.format(age09Delta)})
+~19: ${caseFormat.format(todayData.confirmed_cases_age_10_19)} (${deltaFormat.format(age1019Delta)})
+~29: ${caseFormat.format(todayData.confirmed_cases_age_20_29)} (${deltaFormat.format(age2029Delta)})
+~39: ${caseFormat.format(todayData.confirmed_cases_age_30_39)} (${deltaFormat.format(age3039Delta)})
+~49: ${caseFormat.format(todayData.confirmed_cases_age_40_49)} (${deltaFormat.format(age4049Delta)})
+~59: ${caseFormat.format(todayData.confirmed_cases_age_50_59)} (${deltaFormat.format(age5059Delta)})
+~69: ${caseFormat.format(todayData.confirmed_cases_age_60_69)} (${deltaFormat.format(age6069Delta)})
+~79: ${caseFormat.format(todayData.confirmed_cases_age_70_79)} (${deltaFormat.format(age7079Delta)})
+~89: ${caseFormat.format(todayData.confirmed_cases_age_80_89)} (${deltaFormat.format(age8089Delta)})
+~99: ${caseFormat.format(todayData.confirmed_cases_age_90_99)} (${deltaFormat.format(age9099Delta)})
+~109: ${caseFormat.format(todayData.confirmed_cases_age_100_109)} (${deltaFormat.format(age100109Delta)})
+不明: ${caseFormat.format(todayData.confirmed_cases_age_unknown)} (${deltaFormat.format(ageUnknownDelta)})`;
 
     console.log(message);
-    console.log(message2nd);
-    console.log(message3rd);
-    
-    console.log(message.length);
-    console.log(message2nd.length);
-    console.log(message3rd.length);
-    
-    //userClient.v2.tweetThread([message,message2nd,message3rd]);
+    console.log(message.length);    
 
+    //userClient.v2.tweetThread([message,message2nd,message3rd]);
+    userClient.v2.tweet(message);
 }
 
 main();
