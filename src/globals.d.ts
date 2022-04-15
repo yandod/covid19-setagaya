@@ -4,5 +4,6 @@ declare namespace NodeJS {
       readonly TWITTER_APP_SECRET: string;
       readonly TWITTER_ACCESS_TOKEN: string;
       readonly TWITTER_ACCESS_SECRET: string;
+      readonly NOTION_TOKEN: string;
     }
   }
