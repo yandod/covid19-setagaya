@@ -12,3 +12,4 @@ services:
       - TWITTER_APP_SECRET=
       - TWITTER_ACCESS_TOKEN=
       - TWITTER_ACCESS_SECRET=
+      - NOTION_TOKEN=
