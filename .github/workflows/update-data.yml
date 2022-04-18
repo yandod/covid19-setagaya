@@ -52,4 +52,5 @@ jobs:
         NOTION_TOKEN: ${{secrets.NOTION_TOKEN}}
       run: |
         npm install
+        npx ts-node --files ./src/update.ts
         npx ts-node --files ./src/notion.ts
