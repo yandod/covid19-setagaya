@@ -48,8 +48,8 @@ const main = async () => {
         'home_care': basicData[1][3].match(/\d+/)[0],
         'cured': basicData[1][4].match(/\d+/)[0],
         'deaths': basicData[1][5].match(/\d+/)[0],
-        'confirmed_cases_male': genderData[0][1],
-        'confirmed_cases_female': genderData[1][1],
+        'confirmed_cases_male': genderData[0][1].match(/\d+/)[0],
+        'confirmed_cases_female': genderData[1][1].match(/\d+/)[0],
         'confirmed_cases_age_0_9': ageData[1][1].match(/\d+/)[0],
         'confirmed_cases_age_10_19': ageData[2][1].match(/\d+/)[0],
         'confirmed_cases_age_20_29': ageData[3][1].match(/\d+/)[0],
@@ -70,7 +70,7 @@ const main = async () => {
     } else {
         json_data.data.unshift(new_record);
     }
-    console.dir(json_data);
+    console.dir(new_record);
     fs.writeFileSync('./data/output.json', JSON.stringify(json_data,null,2));
 
     
