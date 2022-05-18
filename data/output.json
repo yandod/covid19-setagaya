@@ -1,6 +1,30 @@
 {
   "data": [
     {
+      "date": "2022-05-18",
+      "updated_date": "5月17日現在",
+      "confirmed_cases": "104343",
+      "inpatient_care": "160",
+      "hotel_care": "163",
+      "home_care": "2460",
+      "cured": "101349",
+      "deaths": "211",
+      "confirmed_cases_male": "52862",
+      "confirmed_cases_female": "51098",
+      "confirmed_cases_age_0_9": "13408",
+      "confirmed_cases_age_10_19": "11138",
+      "confirmed_cases_age_20_29": "24795",
+      "confirmed_cases_age_30_39": "18863",
+      "confirmed_cases_age_40_49": "16681",
+      "confirmed_cases_age_50_59": "9927",
+      "confirmed_cases_age_60_69": "4156",
+      "confirmed_cases_age_70_79": "2519",
+      "confirmed_cases_age_80_89": "1679",
+      "confirmed_cases_age_90_99": "744",
+      "confirmed_cases_age_100_109": "49",
+      "confirmed_cases_age_unknown": "1"
+    },
+    {
       "date": "2022-05-17",
       "updated_date": "5月16日現在",
       "confirmed_cases": "103960",
