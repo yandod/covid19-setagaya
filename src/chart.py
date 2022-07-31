@@ -18,9 +18,9 @@ with urllib.request.urlopen('https://raw.githubusercontent.com/yandod/covid19-se
 po = pd.read_json(json.dumps(data['data']))
 fig, axes_inpatient = plt.subplots()
 
-axes_inpatient.plot(po.iloc[:,0], po.iloc[:,3] ,'C0', label='入院中')
+axes_inpatient.plot(po.iloc[:,0], po.iloc[:,3] ,'C0', label='入院中(左軸)')
 axes_home = axes_inpatient.twinx()
-axes_home.plot(po.iloc[:,0], po.iloc[:,5] ,'C1', label='自宅療養中')
+axes_home.plot(po.iloc[:,0], po.iloc[:,5] ,'C1', label='自宅療養中(右軸)')
 
 # 凡例をまとめる
 h1, l1 = axes_inpatient.get_legend_handles_labels()
