@@ -24,6 +24,16 @@ jobs:
         npm install
         npx ts-node ./src/update.ts
 
+    - name: Use Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.7'
+
+    - name: update chart
+      run: |
+        pip install japanize-matplotlib pandas
+        python ./src/chart.py
+
     - name: Simple commit
       uses: zwaldowski/git-commit-action@v1
     

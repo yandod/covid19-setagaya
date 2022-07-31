@@ -8,7 +8,7 @@ const appSecret = process.env.TWITTER_APP_SECRET;
 const accessToken = process.env.TWITTER_ACCESS_TOKEN;
 const accessSecret = process.env.TWITTER_ACCESS_SECRET;
 
-const main = () => {
+const main = async () => {
 
     const today = new Date();
     if (holiday_jp.isHoliday(today)) {
@@ -57,7 +57,8 @@ https://bit.ly/covid19setagaya`;
 
     console.log(message);
     console.log(message.length);
-    userClient.v2.tweet(message);
+    const mediaId = await userClient.v1.uploadMedia('./data/fig1.png');
+    userClient.v1.tweet(message, { media_ids: mediaId});
 }
 
 main();

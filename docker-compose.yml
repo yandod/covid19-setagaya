@@ -13,3 +13,13 @@ services:
       - TWITTER_ACCESS_TOKEN=
       - TWITTER_ACCESS_SECRET=
       - NOTION_TOKEN=
+  python:
+    image: python:3.7
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html:cached
+      - ./pip_modules:/pip_modules
+    environment:
+      - PYTHONIOENCODING=utf-8
+      - LANG=C.UTF-8
+      - PYTHONUSERBASE=/pip_modules
