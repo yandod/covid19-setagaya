@@ -1,8 +1,6 @@
 name: tweet weekly stats
 
 on:
-  schedule:
-    - cron:  '45 6 * * TUE'
   workflow_dispatch:
 jobs:
   tweet:
